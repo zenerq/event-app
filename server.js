@@ -2,10 +2,11 @@ const { urlencoded } = require('express');
 const express = require('express')
 const mongoose = require('mongoose')
 const Event = require('./models/events')
+require('dotenv').config();
 const app = express();
 app.use(express.urlencoded({ extended: true }))
 const PORT = 3000;
-const mongodb = '/// Your mongodb url ///'
+const mongodb = process.env.MONGODB_URI
 mongoose.set('strictQuery', false);
 mongoose.connect(mongodb).then(() => console.log('Connected')).catch(err => console.log(err))
 
