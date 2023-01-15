@@ -1,1 +1,1 @@
-# Event app created with Node.js, EJS & Materialize CSS
+# Event app created with Node.js, Mongodb(Mongoose), EJS & Materialize CSS
