@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head.ejs')%>
+<body>
+  <%- include('./partials/navbar.ejs')%>
+
+
+
+  <div class="row center">
+    <div class="col s12 m12">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title"><h3><%= event.name %></h3></span>
+          <p><%= event.note %></p>
+        </div>
+        <div class="card-action">
+          <a id="delBtn"> <button class="delete btn red" data-id="<%= event._id%>">delete</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    delBtn.onclick = function(e){
+      e.preventDefault()
+      const id = e.target.getAttribute('data-id')
+      const endpoint = `/events/${id}`
+      fetch(endpoint, {
+        method: 'DELETE'
+      }).then((res) => res.json()).then(data => {
+        window.location.href = data.redirect
+      }).catch(err => console.log(err))
+    }
+  </script>
+</body>
+</html>

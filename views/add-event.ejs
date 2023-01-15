@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs')%>
+<body>
+  <%- include('./partials/navbar.ejs')%>
+
+  <div class="row container">
+    <form class="col s12" action="/events" method="POST">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">event</i>
+          <input id="event_name" type="text" class="validate" name="name" >
+          <label for="event_name">Event Name</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">event_note</i>
+          <input id="note" type="tel" class="validate" name="note" >
+          <label for="note">Note</label>
+        </div>
+      </div>
+      <button class="btn greeen">Add Event</button>
+    </form>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+                document.addEventListener("DOMContentLoaded", function(event) {
+                M.updateTextFields();
+
+                
+                document.getElementById("event_name").addEventListener("input", function(event) {
+                    if (event.target.value.length < 5) {
+                        event.target.setCustomValidity("Event name must be at least 5 characters long");
+                    } else {
+                        event.target.setCustomValidity("");
+                    }
+                });
+                document.getElementById("note").addEventListener("input", function(event) {
+                    if (event.target.value.length < 5) {
+                        event.target.setCustomValidity("Note must be at least 5 characters long");
+                    } else {
+                        event.target.setCustomValidity("");
+                    }
+                });
+
+
+  })</script>
+  
+</body>
+</html>
